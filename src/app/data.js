@@ -91,13 +91,13 @@ export const projectsData = [
 
 export const BtnList = [
   { label: "Home", link: "/", icon: "home", newTab: false },
-  { label: "About", link: "/about", icon: "about", newTab: false },
-  { label: "Projects", link: "/projects", icon: "projects", newTab: false },
-  { label: "Contact", link: "/contact", icon: "contact", newTab: false },
+  { label: "About", link: "/about", icon: "about me", newTab: false },
+  { label: "project", link: "/projects", icon: "project", newTab: false },
+  { label: "contact", link: "/contact", icon: "contact", newTab: false },
   {
     label: "Github",
-    link: "https://www.github.com/codebucks27",
-    icon: "github",
+    link: "https://github.com/kimternet",
+    icon: "Github",
     newTab: true,
   },
   {
@@ -113,7 +113,7 @@ export const BtnList = [
     newTab: true,
   },
   {
-    label: "Resume",
+    label: "resume",
     link: "/resume.pdf",
     icon: "resume",
     newTab: true,
