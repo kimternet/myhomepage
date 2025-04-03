@@ -1,6 +1,6 @@
 import Image from "next/image";
 import bg from "../../../../public/background/contact-background.png"
-
+import Form from "@/components/contact/Form";
 
 export default function Contact() {
   return (
@@ -22,8 +22,8 @@ export default function Contact() {
             Whether you have a question, a project in mind, or just want to say hi, 
             I'll do my best to get back to you!
           </p>
-
         </div>
+        <Form/>
 
 
       </article>
