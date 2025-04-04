@@ -19,9 +19,9 @@ export default function Contact() {
             Contact Me
           </h1>
           <p className="text-center font-light text-sm xs:text-base">
-            I'm currently looking for new opportunities. 
+            I&apos;m currently looking for new opportunities. 
             Whether you have a question, a project in mind, or just want to say hi, 
-            I'll do my best to get back to you!
+            I&apos;ll do my best to get back to you!
           </p>
         </div>
         <Form/>
@@ -33,4 +33,4 @@ export default function Contact() {
 
     </>
   );
-}
+};
