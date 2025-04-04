@@ -2,6 +2,7 @@
 import { motion } from "framer-motion";
 import { Home } from "lucide-react";
 import Link from "next/link";
+import React from "react";
 
 const NavLink = motion(Link);
 const HomeBtn = () => {
