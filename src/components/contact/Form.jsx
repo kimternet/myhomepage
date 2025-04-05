@@ -31,21 +31,43 @@ export default function Form() {
   const emailTo = "ksanzi@naver.com"; // 실제 이메일 주소로 변경하세요
   
   // 폼 데이터가 유효할 때 실행되는 함수
-  const onSubmit = data => {
+  const onSubmit = (data, e) => {
+    e.preventDefault();
     console.log("Form data is valid:", data);
     console.log("Form fields:", Object.keys(data));
     setStatus('sending');
     
-    // FormSubmit으로 폼 제출
-    if (formRef.current) {
-      formRef.current.submit();
-    }
+    // FormData 객체 생성
+    const formData = new FormData();
+    formData.append('name', data.name);
+    formData.append('email', data.email);
+    formData.append('phone', data.phone);
+    formData.append('title', data.title);
+    formData.append('message', data.message);
+    formData.append('_captcha', 'false');
+    formData.append('_template', 'table');
+    formData.append('_subject', '홈페이지에서 새 문의가 도착했습니다');
     
-    // 성공 메시지 표시 (FormSubmit이 페이지를 리디렉션하므로 이 코드는 실행되지 않을 수 있음)
-    setTimeout(() => {
+    // FormSubmit API 호출
+    fetch(`https://formsubmit.co/ajax/${emailTo}`, {
+      method: 'POST',
+      body: formData
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    })
+    .then(data => {
+      console.log('Success:', data);
       setStatus('success');
       reset();
-    }, 2000);
+    })
+    .catch(error => {
+      console.error('Error:', error);
+      setStatus('error');
+    });
   };
   
   // 폼 제출 실패 시 호출되는 함수
@@ -80,17 +102,10 @@ export default function Form() {
       variants={container}
       initial="hidden"
       animate="show"
-      action={`https://formsubmit.co/${emailTo}`}
-      method="POST"
       onSubmit={handleSubmit(onSubmit, onError)}
       className='max-w-md w-full flex flex-col items-center justify-center space-y-4'
     >
-      {/* FormSubmit 설정 */}
-      <input type="hidden" name="_captcha" value="false" />
-      <input type="hidden" name="_subject" value="홈페이지에서 새 문의가 도착했습니다" />
-      <input type="hidden" name="_template" value="table" />
-      <input type="hidden" name="_next" value={typeof window !== 'undefined' ? window.location.href : ''} />
-      
+      {/* FormSubmit 히든 필드는 더 이상 필요하지 않음 */}
       <motion.input 
         variants={item}
         type="text" 
