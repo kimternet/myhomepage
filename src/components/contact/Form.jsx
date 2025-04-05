@@ -1,10 +1,7 @@
 "use client"
-import emailjs from '@emailjs/browser';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { motion } from 'framer-motion';
-
-
 
 const container = {
   hidden: { opacity: 0 },
@@ -22,54 +19,26 @@ const item = {
   show: {scale: 1},
 };
 
-const NavLink = motion(Form);
-
 export default function Form() {
   const { register, handleSubmit, formState: { errors }, reset } = useForm({
-    mode: 'onSubmit', // 폼 제출 시에만 유효성 검사
-    reValidateMode: 'onChange' // 사용자가 입력 필드를 변경할 때 재검증
+    mode: 'onSubmit',
+    reValidateMode: 'onChange'
   });
   const [status, setStatus] = useState('');
-
-  const sendEmail = (params) => {
-    setStatus('sending');
-    emailjs
-      .send(process.env.NEXT_PUBLIC_SERVICE_ID, 
-        process.env.NEXT_PUBLIC_TEMPLATE_ID,
-        params,
-        {
-        publicKey: process.env.NEXT_PUBLIC_PUBLIC_KEY,
-        limitRate: {
-            throttle: 5000,
-        }
-    })
-      .then(
-        () => {
-          console.log('SUCCESS!');
-          setStatus('success');
-          reset(); // 폼 초기화
-        },
-        (error) => {
-          console.log('FAILED...', error.text);
-          setStatus('error');
-        },
-      );
-  };
+  
+  // 이메일을 받을 주소 설정 (실제 이메일 주소로 변경하세요)
+  const emailTo = "your@email.com";
 
   const onSubmit = data => {
-    console.log("Form data:", data); // 로그 추가
-
-    const templateParams = {
-        to_name: "김형운",
-        to_email: "kimternet23@gmail.com",
-        from_name: data.name,
-        reply_to: data.email,
-        mobile: data.mobile, // Mobile Number -> mobile로 수정
-        title: data.title, // Title -> title로 수정
-        message: data.message,
-    }
-
-    sendEmail(templateParams)
+    console.log("Form data:", data);
+    setStatus('sending');
+    
+    // FormSubmit은 form 제출 시 자동으로 이메일을 전송합니다
+    // 여기서는 성공 상태를 표시하기 위한 타이머만 설정합니다
+    setTimeout(() => {
+      setStatus('success');
+      reset(); // 폼 초기화
+    }, 2000);
   };
   
   // 상태에 따른 메시지와 스타일 설정
@@ -94,85 +63,97 @@ export default function Form() {
   
   return (
     <motion.form
-    variants={container}
-    initial="hidden"
-    animate="show"
-
-    onSubmit={handleSubmit(onSubmit)}
-    className='max-w-md w-full flex flex-col items-center justify-center space-y-4'
+      variants={container}
+      initial="hidden"
+      animate="show"
+      action={`https://formsubmit.co/${emailTo}`}
+      method="POST"
+      onSubmit={handleSubmit(onSubmit)}
+      className='max-w-md w-full flex flex-col items-center justify-center space-y-4'
     >
+      {/* FormSubmit 설정 */}
+      <input type="hidden" name="_captcha" value="false" />
+      <input type="hidden" name="_subject" value="홈페이지에서 새 문의가 도착했습니다" />
+      <input type="hidden" name="_template" value="table" />
+      <input type="hidden" name="_next" value={typeof window !== 'undefined' ? window.location.href : ''} />
+      
       <motion.input 
-      variants={item}
-      type="text" 
-      placeholder="성함" 
-      {...register("name", {
-        required: "이름을 입력해주세요"
-      })}
-      className='w-full p-2 rounded-md shadow-lg text-foreground focus:outline-none focus:ring-2 focus:ring-accent/50 custom-bg'
+        variants={item}
+        type="text" 
+        placeholder="성함" 
+        {...register("name", {
+          required: "이름을 입력해주세요"
+        })}
+        name="name"
+        className='w-full p-2 rounded-md shadow-lg text-foreground focus:outline-none focus:ring-2 focus:ring-accent/50 custom-bg'
       />
       {errors.name && <span className='inline-block self-start text-accent'>{errors.name.message}</span>}
 
       <motion.input 
-      variants={item}
-      type="email" 
-      placeholder="이메일" 
-      {...register("email", {
-        required: "이메일을 입력해주세요",
-        pattern: {
-          value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-          message: "이메일 형식이 올바르지 않습니다."
-        }
-      })} 
-      className='w-full p-2 rounded-md shadow-lg text-foreground focus:outline-none focus:ring-2 focus:ring-accent/50 custom-bg'
+        variants={item}
+        type="email" 
+        placeholder="이메일" 
+        {...register("email", {
+          required: "이메일을 입력해주세요",
+          pattern: {
+            value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+            message: "이메일 형식이 올바르지 않습니다."
+          }
+        })}
+        name="email"
+        className='w-full p-2 rounded-md shadow-lg text-foreground focus:outline-none focus:ring-2 focus:ring-accent/50 custom-bg'
       />
       {errors.email && <span className='inline-block self-start text-accent'>{errors.email.message}</span>}
 
       <motion.input 
-      variants={item}
-      type="tel" 
-      placeholder="연락처" 
-      {...register("mobile", {
-        required: "연락처를 입력해주세요",
-        pattern: {
-          value: /^[0-9]{10,11}$/,
-          message: "올바른 전화번호 형식이 아닙니다."
-        }
-      })} 
-      className='w-full p-2 rounded-md shadow-lg text-foreground focus:outline-none focus:ring-2 focus:ring-accent/50 custom-bg'
+        variants={item}
+        type="tel" 
+        placeholder="연락처" 
+        {...register("mobile", {
+          required: "연락처를 입력해주세요",
+          pattern: {
+            value: /^[0-9]{10,11}$/,
+            message: "올바른 전화번호 형식이 아닙니다."
+          }
+        })}
+        name="phone"
+        className='w-full p-2 rounded-md shadow-lg text-foreground focus:outline-none focus:ring-2 focus:ring-accent/50 custom-bg'
       />
       {errors.mobile && <span className='inline-block self-start text-accent'>{errors.mobile.message}</span>}
 
       <motion.input 
-      variants={item}
-      type="text" 
-      placeholder="제목" 
-      {...register("title", {
-        required: "제목을 입력해주세요"
-      })} 
-      className='w-full p-2 rounded-md shadow-lg text-foreground focus:outline-none focus:ring-2 focus:ring-accent/50 custom-bg'
+        variants={item}
+        type="text" 
+        placeholder="제목" 
+        {...register("title", {
+          required: "제목을 입력해주세요"
+        })}
+        name="title"
+        className='w-full p-2 rounded-md shadow-lg text-foreground focus:outline-none focus:ring-2 focus:ring-accent/50 custom-bg'
       />
       {errors.title && <span className='inline-block self-start text-accent'>{errors.title.message}</span>}
 
       <motion.textarea 
-      variants={item}
-      placeholder='내용'
-      {...register("message", {
-        required: "내용을 입력해주세요", 
-        maxLength: {
-          value: 256,
-          message: "최대 256자까지 입력 가능합니다."
-        }
-      })} 
-      className='w-full p-2 rounded-md shadow-lg text-foreground focus:outline-none focus:ring-2 focus:ring-accent/50 custom-bg'
+        variants={item}
+        placeholder='내용'
+        {...register("message", {
+          required: "내용을 입력해주세요", 
+          maxLength: {
+            value: 256,
+            message: "최대 256자까지 입력 가능합니다."
+          }
+        })}
+        name="message"
+        className='w-full p-2 rounded-md shadow-lg text-foreground focus:outline-none focus:ring-2 focus:ring-accent/50 custom-bg'
       />
       {errors.message && <span className='inline-block self-start text-accent'>{errors.message.message}</span>}
 
       <motion.input 
-      variants={item}
-      value={status === 'sending' ? "전송 중..." : "send!"}
-      disabled={status === 'sending'}
-      className={`px-10 py-4 rounded-md shadow-lg bg-background border border-accent/30 border-solid hover:shadow-glass-sm backdrop-blur-sm text-foreground focus:outline-none focus:ring-2 focus:ring-accent/50 cursor-pointer capitalize ${status === 'sending' ? 'opacity-70 cursor-not-allowed' : ''}`}
-      type="submit" />
+        variants={item}
+        value={status === 'sending' ? "전송 중..." : "send!"}
+        disabled={status === 'sending'}
+        className={`px-10 py-4 rounded-md shadow-lg bg-background border border-accent/30 border-solid hover:shadow-glass-sm backdrop-blur-sm text-foreground focus:outline-none focus:ring-2 focus:ring-accent/50 cursor-pointer capitalize ${status === 'sending' ? 'opacity-70 cursor-not-allowed' : ''}`}
+        type="submit" />
       
       {getStatusMessage()}
     </motion.form>

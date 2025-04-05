@@ -11,7 +11,7 @@ const inter = Inter({
 });
 
 export const metadata = {
-  title: "김형운 홈페이지",
+  title: "Welcome to my homepage",
   description: "김형운 홈페이지",
 };
 
