@@ -1,5 +1,5 @@
 "use client"
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { useForm } from 'react-hook-form';
 import { motion } from 'framer-motion';
 
@@ -25,20 +25,33 @@ export default function Form() {
     reValidateMode: 'onChange'
   });
   const [status, setStatus] = useState('');
+  const formRef = useRef(null);
   
-  // 이메일을 받을 주소 설정 (실제 이메일 주소로 변경하세요)
-  const emailTo = "your@email.com";
-
+  // 이메일을 받을 주소 설정
+  const emailTo = "ksanzi@naver.com"; // 실제 이메일 주소로 변경하세요
+  
+  // 폼 데이터가 유효할 때 실행되는 함수
   const onSubmit = data => {
-    console.log("Form data:", data);
+    console.log("Form data is valid:", data);
+    console.log("Form fields:", Object.keys(data));
     setStatus('sending');
     
-    // FormSubmit은 form 제출 시 자동으로 이메일을 전송합니다
-    // 여기서는 성공 상태를 표시하기 위한 타이머만 설정합니다
+    // FormSubmit으로 폼 제출
+    if (formRef.current) {
+      formRef.current.submit();
+    }
+    
+    // 성공 메시지 표시 (FormSubmit이 페이지를 리디렉션하므로 이 코드는 실행되지 않을 수 있음)
     setTimeout(() => {
       setStatus('success');
-      reset(); // 폼 초기화
+      reset();
     }, 2000);
+  };
+  
+  // 폼 제출 실패 시 호출되는 함수
+  const onError = errors => {
+    console.log("Form validation errors:", errors);
+    setStatus('error');
   };
   
   // 상태에 따른 메시지와 스타일 설정
@@ -63,12 +76,13 @@ export default function Form() {
   
   return (
     <motion.form
+      ref={formRef}
       variants={container}
       initial="hidden"
       animate="show"
       action={`https://formsubmit.co/${emailTo}`}
       method="POST"
-      onSubmit={handleSubmit(onSubmit)}
+      onSubmit={handleSubmit(onSubmit, onError)}
       className='max-w-md w-full flex flex-col items-center justify-center space-y-4'
     >
       {/* FormSubmit 설정 */}
@@ -109,17 +123,21 @@ export default function Form() {
         variants={item}
         type="tel" 
         placeholder="연락처" 
-        {...register("mobile", {
+        {...register("phone", {
           required: "연락처를 입력해주세요",
+          minLength: {
+            value: 1,
+            message: "연락처를 입력해주세요"
+          },
           pattern: {
-            value: /^[0-9]{10,11}$/,
-            message: "올바른 전화번호 형식이 아닙니다."
+            value: /^[0-9-]+$/,
+            message: "연락처는 숫자만 입력해주세요"
           }
         })}
         name="phone"
         className='w-full p-2 rounded-md shadow-lg text-foreground focus:outline-none focus:ring-2 focus:ring-accent/50 custom-bg'
       />
-      {errors.mobile && <span className='inline-block self-start text-accent'>{errors.mobile.message}</span>}
+      {errors.phone && <span className='inline-block self-start text-accent'>{errors.phone.message}</span>}
 
       <motion.input 
         variants={item}
