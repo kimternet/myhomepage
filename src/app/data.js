@@ -134,9 +134,10 @@ export const BtnList = [
   },
   {
     label: "resume",
-    link: "/resume.pdf",
+    link: "https://drive.google.com/file/d/1dpuoPfzoDPk0SxtiHItGvIlvIULutVYq/view?usp=drive_link",
     icon: "resume",
     newTab: true,
+    download: false
   },
 ];
 

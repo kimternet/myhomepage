@@ -53,6 +53,7 @@ const NavButton = ({
   icon,
   newTab,
   labelDirection = "right",
+  download
 }) => {
   return (
     <ResponsiveComponent>
@@ -72,6 +73,7 @@ const NavButton = ({
                 name={label}
                 prefetch={false}
                 scroll={false}
+                download={download}
               >
                 <span className="relative w-14 h-14 p-4 animate-spin-slow-reverse group-hover:pause hover:text-accent">
                   {getIcon(icon)}
@@ -95,6 +97,7 @@ const NavButton = ({
                 name={label}
                 prefetch={false}
                 scroll={false}
+                download={download}
               >
                 <span className="relative w-10 h-10 xs:w-14 xs:h-14 p-2.5 xs:p-4 hover:text-accent">
                   {getIcon(icon)}
