@@ -30,7 +30,7 @@ Next.js, Three.js, 그리고 Tailwind CSS를 이용하여 모바일 반응형 �
 4.  **VS Code에서 프로젝트 열기**: `code .`
 5.  **개발 서버 시작**: `npm run dev` (package.json의 스크립트에 따라 다를 수 있습니다.)
 
-## 사용된 주요 라이브러리 및 도구 [2, 3]
+## 사용된 주요 라이브러리 및 도구
 
 *   **react-three-fiber**: Three.js를 위한 React 렌더러
 *   **@react-three/drei**: react-three-fiber를 위한 유용한 헬퍼 및 추상화
