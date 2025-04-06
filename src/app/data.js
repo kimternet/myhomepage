@@ -120,6 +120,7 @@ export const BtnList = [
     icon: "Github",
     newTab: true,
   },
+  /* 나중에 필요하면 추가할 링크
   {
     label: "LinkedIn",
     link: "https://www.linkedin.com/in/codebucks",
@@ -132,9 +133,10 @@ export const BtnList = [
     icon: "twitter",
     newTab: true,
   },
+  */
   {
     label: "resume",
-    link: "https://drive.google.com/file/d/1dpuoPfzoDPk0SxtiHItGvIlvIULutVYq/view?usp=drive_link",
+    link: "https://docs.google.com/document/d/1RNTLb0oH7ijuE3vzw0X88gtbGEb3dbzO88JNHl_AKxg/edit?usp=drive_link",
     icon: "resume",
     newTab: true,
     download: false
