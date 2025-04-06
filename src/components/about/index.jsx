@@ -14,7 +14,7 @@ const AboutDetails = () => {
             AI 응용 웹/앱 개발자로 성장하고 싶습니다.
             </h2>
             <p className="font-light text-xs sm:text-sm md:text-base">
-            2015.03 ~ 2019.02 동국대학교(WISE) 한국음악학 학사 졸업
+            2015.03 ~ 2019.02 동국대학교(WISE) 한국음악학 학사 졸업<br />
             2019.03 ~ 2025.02 상명대학교 뉴미디어음악학과 석사 졸업
             </p>
             </ItemLayout>
