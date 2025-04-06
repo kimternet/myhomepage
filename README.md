@@ -134,7 +134,7 @@ Next.js, Three.js, 그리고 Tailwind CSS를 이용하여 모바일 반응형 �
 * 문제: 폼 제출 시 "전송 실패" 메시지가 표시되었습니다.
 * 원인: FormSubmit API 호출 방식과 데이터 형식이 올바르지 않았습니다.
 * 해결방법:
-* API 엔드포인트를 https://formsubmit.co/${emailTo}에서 https://formsubmit.co/ajax/${emailTo}로 변경
+* API 엔드포인트를 ```https://formsubmit.co/${emailTo}에서 https://formsubmit.co/ajax/${emailTo}```로 변경
 * JSON 데이터 대신 FormData 객체를 사용하여 폼 데이터 전송
 * 불필요한 Content-Type 헤더 제거
 ### 4. PDF 파일 표시 문제
@@ -155,13 +155,13 @@ Next.js, Three.js, 그리고 Tailwind CSS를 이용하여 모바일 반응형 �
 ### 7. 날짜 형식 표시 문제
 * 문제: 프로젝트 날짜가 영어 형식(예: "Thu Jun 01 2024")으로 표시되었습니다.
 * 원인: ProjectLayout 컴포넌트에서 JavaScript의 Date 객체와 toDateString() 메소드를 사용하여 날짜를 변환했습니다.
-* 해결방법: new Date(date).toDateString() 부분을 제거하고 날짜 문자열을 직접 표시하도록 수정했습니다.
+* 해결방법: ```new Date(date).toDateString()``` 부분을 제거하고 날짜 문자열을 직접 표시하도록 수정했습니다.
 
 ## 끝
 
 Next.js, Three.js, Tailwind CSS, Framer Motion, React Hook Form 등 다양한 기술을 활용하여 포트폴리오 웹사이트를 구축했습니다.
 
-## Resources Used in This Project
+## 프로젝트 리소스
 
 #### 3D Models
 
@@ -171,7 +171,7 @@ Next.js, Three.js, Tailwind CSS, Framer Motion, React Hook Form 등 다양한 �
 
 #### AI Images
 
-- Created with the help of [Playground AI](https://playgroundai.com/)
+- [Playground AI](https://playgroundai.com/)
 
 #### Github Stats & Details
 
@@ -189,13 +189,6 @@ Next.js, Three.js, Tailwind CSS, Framer Motion, React Hook Form 등 다양한 �
 - Emails using [Emailjs](https://www.emailjs.com/) <br />
 - Convert 3d models to JSX using [Gltf JSX](https://github.com/pmndrs/gltfjsx)
 
-#### Audio 
-
-- Music by <a href="https://pixabay.com/users/shidenbeatsmusic-25676252/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=20772">Shiden Beats Music</a> from <a href="https://pixabay.com/music//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=20772">Pixabay</a>
-
----
-
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
 
