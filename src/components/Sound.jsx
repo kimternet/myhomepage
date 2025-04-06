@@ -12,7 +12,7 @@ const Modal = ({ onClose, toggle }) => {
             py-8 px-6 xs:px-10 sm:px-16 rounded shadow-glass-inset text-center space-y-8
             "
       >
-        <p className="font-light">안녕하세요! 배경음악을 재생하시겠어요?</p>
+        <p className="font-light">안녕하세요! 배경음악은 제 자작곡입니다. 들어보실래요😊?</p>
         <div className="flex items-center justify-center space-x-4">
           <button
             onClick={toggle}
@@ -87,7 +87,7 @@ const Sound = () => {
       )}
 
       <audio ref={audioRef} loop>
-        <source src={"/audio/birds39-forest-20772.mp3"} type="audio/mpeg" />
+        <source src={"/audio/mysong.mp3"} type="audio/mpeg" />
         your browser does not support the audio element.
       </audio>
       <motion.button

@@ -9,13 +9,27 @@ const AboutDetails = () => {
     <section className='py-20 w-full'>
         <div className='grid grid-cols-12 gap-4 xs:gap-6 md:gap-8 w-full'>
 
-            <ItemLayout className={'col-span-full lg:col-span-8 row-span-2 flex-col items-start'}>
-            <h2 className="text-xl md:text-2xl text-left w-full capitalize">
+            <ItemLayout className={'col-span-full lg:col-span-8 row-span-2 flex-col items-center'}>
+            <h2 className="text-xl md:text-2xl text-center w-full capitalize">
             AI 응용 웹/앱 개발자로 성장하고 싶습니다.
             </h2>
             <p className="font-light text-xs sm:text-sm md:text-base">
-            2015.03 ~ 2019.02 동국대학교(WISE) 한국음악학 학사 졸업<br />
-            2019.03 ~ 2025.02 상명대학교 뉴미디어음악학과 석사 졸업
+            🏫<br />
+            2015.03 ~ 2019.02 동국대학교(WISE) 한국음악학 학사 졸업<br /><br />
+            2019.03 ~ 2025.02 상명대학교 뉴미디어음악학과 석사 졸업<br />
+            <span className="text-sm pl-4 inline-block">✔️ Computer Vision(YOLOv8s)을 활용한 시각장애인 악기 교육 논문 KCI등재(한국시각장애교육재활학회)</span><br /><br />
+            2024.04 ~ 2024.09 Intel AI 전문 교육 과정 수료(6개월, 총 930시간)<br />
+            <span className="text-sm pl-4 inline-block">✔️ 2024년 AI 무인이동체 산업엑스포 해커톤 전국 성인부 대상</span><br />
+            <span className="text-sm pl-4 inline-block">✔️ Intel AI Global Impact Festival 2024 참가(AI Changemakers: 18 Years & Above, AI 사회적 임팩트 프로젝트)</span><br /><br />
+
+            👨‍💻<br />
+            2025.01 ~ 2025.04 (주)보인정보기술 미래기획팀 AI research <br /><br />
+            🎙️<br />
+            대학원에서 컴퓨터 음악을 전공하면서 IT 기술에 관심이 많이 생겼습니다.<br />
+            이후 AI 응용 웹/앱 개발자로 성장하고자 KDT 교육 과정을 수료 후 공부하고 있습니다.<br />
+            
+
+
             </p>
             </ItemLayout>
 
@@ -78,7 +92,7 @@ const AboutDetails = () => {
                         </svg>
                         <span className="text-lg font-medium">Notion DevLog</span>
                     </div>
-                    <p className="mt-2 text-sm text-foreground/80">개발 일지와 기술적 인사이트를 기록한 노션 블로그입니다.</p>
+                    <p className="mt-2 text-sm text-foreground/80">공부한 내용을 기록한 노션 블로그입니다.</p>
                 </a>
             </ItemLayout>
 

@@ -19,9 +19,7 @@ export default function Contact() {
             Contact Me
           </h1>
           <p className="text-center font-light text-sm xs:text-base">
-            I&apos;m currently looking for new opportunities. 
-            Whether you have a question, a project in mind, or just want to say hi, 
-            I&apos;ll do my best to get back to you!
+            새로운 기회와 도전에 언제나 열려있습니다. 많은 연락 부탁드립니다!
           </p>
         </div>
         <Form/>
