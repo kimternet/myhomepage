@@ -64,6 +64,7 @@ const AboutDetails = () => {
                 <img className="w-full h-auto" src="https://skillicons.dev/icons?i=react,nextjs,flutter,python,dart,js,html,css,docker,linux,mongodb,mysql,postgres,pytorch" 
                 alt="kimternet" loading="lazy" />
             </ItemLayout>
+            
 
 
             {/* repository

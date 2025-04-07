@@ -20,7 +20,7 @@ export const projectsData = [
   {
     id: 1,
     name: "CCTV & UAV 연계형 AI 응급 대응 시스템시각장애인을 위한 AI 악기 교육 시스템",
-    description: "팀 프로젝트, ECG 데이터로 CNN 모델 구축 담당, 2024년 무인이동체 산업엑스포 해커톤 대상 수상팀 프로젝트",
+    description: "팀 프로젝트, ECG 데이터로 CNN 모델 구축 담당, 2024년 무인이동체 산업엑스포 해커톤 '대상' 수상팀 프로젝트",
     date: "2024.06",
     videoLink: null,
     pdfLink: "https://drive.google.com/file/d/1dSbabmVKIVrdNTneNAES7ynuh1iAzJrM/view?usp=drive_link",
