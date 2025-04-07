@@ -5,7 +5,8 @@ import RenderModel from "@/components/RenderModel";
 import AboutDetails from "@/components/about";
 
 import dynamic from "next/dynamic";
-const HatModel = dynamic(() => import("@/components/models/HatModel"), { ssr: false });
+// HatModel 대신 AboutBird 사용
+const AboutBird = dynamic(() => import("@/components/models/AboutBird"), { ssr: false });
 
 
 export default function Home() {
@@ -16,7 +17,7 @@ export default function Home() {
 
     <div className="w-full h-3/5 xs:h-3/4 xs:h-screen absolute top-1/2 -translate-y-1/2 left-0">
       <RenderModel>
-      <HatModel/>
+      <AboutBird/>
     </RenderModel>
     </div>
 <div className="relative w-full h-screen flex flex-col items-center justify-center">

@@ -1,11 +1,19 @@
 "use client"
 import React, { useEffect, useState } from 'react'
+import { usePathname } from 'next/navigation'
 
 const VisitorCounter = () => {
   const [count, setCount] = useState({ today: 0, total: 0 });
   const [loading, setLoading] = useState(true);
-
+  const pathname = usePathname();
+  
+  // 홈 페이지에서만 표시
+  const isHomePage = pathname === '/';
+  
   useEffect(() => {
+    // 홈 페이지가 아니면 실행하지 않음
+    if (!isHomePage) return;
+    
     // 로컬 스토리지에서 방문자 수 정보 가져오기
     const getVisitorCount = () => {
       try {
@@ -44,7 +52,10 @@ const VisitorCounter = () => {
     };
     
     getVisitorCount();
-  }, []);
+  }, [isHomePage]);
+
+  // 홈 페이지가 아니면 렌더링하지 않음
+  if (!isHomePage) return null;
 
   return (
     <div className="fixed bottom-4 right-4 bg-background/80 backdrop-blur-sm border border-accent/30 rounded-lg px-4 py-3 shadow-glass-sm z-10">

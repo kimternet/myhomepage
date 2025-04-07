@@ -5,7 +5,8 @@ import RenderModel from "@/components/RenderModel";
 import Navigation from "@/components/navigation";
 import dynamic from "next/dynamic";
 
-const Wizard = dynamic(() => import("@/components/models/Wizard"), { ssr: false });
+// 새로운 BlueBird 모델로 변경
+const BlueBird = dynamic(() => import("@/components/models/BlueBird"), { ssr: false });
 
 export default function Home() {
   return (
@@ -16,7 +17,7 @@ export default function Home() {
     {/*네비게이션 3D 모델 렌더링*/}
     <Navigation/>
     <RenderModel>
-      <Wizard/>
+      <BlueBird/>
     </RenderModel>
 
    </div>
