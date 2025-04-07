@@ -50,8 +50,8 @@ export const projectsData = [
     description: "개인프로젝트, Next.js 14, LangChain, Puppeteer, RAG, GPT 4o API 활용",
     date: "2025.04.08",
     videoLink: null,
-    pdfLink: null,
-    demoLink: "https://health-rag-chatbot.vercel.app/",
+    pdfLink: "https://health-rag-chatbot.vercel.app/",
+    demoLink: "https://github.com/kimternet/HealthRagChatbot",
   },
   {
     id: 5,
