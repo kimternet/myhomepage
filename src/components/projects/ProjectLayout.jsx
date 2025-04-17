@@ -47,7 +47,7 @@ const ProjectLayout = ({name, description, date, demoLink, videoLink, pdfLink}) 
               className='px-3 py-2 flex items-center space-x-2 bg-accent/10 hover:bg-accent/20 text-accent rounded-md text-sm'
             >
               <FileText size={16} />
-              <span>Web/PDF Link</span>
+              <span>Link</span>
             </NavLink>
           )}
           {demoLink && (
